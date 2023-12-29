@@ -13,11 +13,11 @@ func filterOldEmails(emails []email) {
 	go sendIsOld(isOldChan, emails)
 
 	// Getting the outcome of the concurrent function through a channel
-	isOld := <- isOldChan
+	isOld := <-isOldChan
 	fmt.Println("email 1 is old:", isOld)
-	isOld = <- isOldChan
+	isOld = <-isOldChan
 	fmt.Println("email 2 is old:", isOld)
-	isOld = <- isOldChan
+	isOld = <-isOldChan
 	fmt.Println("email 3 is old:", isOld)
 }
 

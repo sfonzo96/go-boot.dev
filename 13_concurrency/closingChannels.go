@@ -7,6 +7,8 @@ Use an infinite for loop to read from the channel:
 If the channel is closed, break out of the loop
 Otherwise, keep a running total of the number of reports sent
 Return the total number of reports sent
+
+Channels can return two values, the value sent and a boolean that indicates if it's open or closed. A opened channel will return the value + true, and a closed channel will return the zero value of the type + false
 */
 
 package main
@@ -19,7 +21,7 @@ import (
 func countReports(numSentCh chan int) int {
 	total := 0
 	for {
-		sentReports, ok := <- numSentCh
+		sentReports, ok := <-numSentCh
 		if !ok {
 			return total
 		}
